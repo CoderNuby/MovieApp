@@ -1,0 +1,16 @@
+﻿ul {
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+ul li {
+    margin: 5px;
+    color: #808081;
+    padding: 5px;
+    border-bottom: solid 2px #017759;
+}
+
+h1 {
+    text-align: center;
+    color: #808081;
+}
