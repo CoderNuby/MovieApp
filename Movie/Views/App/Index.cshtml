@@ -1,14 +1,49 @@
-﻿@*
+﻿@model IEnumerable<MovieViewModel>
+@*
     Main page
 *@
 @{
     ViewBag.Title = "Welcome to Movie App";
 }
 
-<a asp-action="About">About Us</a>
+<style>
+    a {
+        text-decoration: none;
+        color: #007bff;
+        margin-right: 10px;
+    }
+</style>
 
-<ul>
-    <li><a asp-action="Edit">Harry Potter</a></li>
-    <li><a asp-action="Edit">Her</a></li>
-    <li><a asp-action="Edit">Dan in the real life</a></li>
-</ul>
+<div class="container text-center container-box">
+    <div class="row justify-content-end">
+        <div class="col-4">
+            <a asp-action="AddOrEdit" class="btn btn-outline-success">Add Movie</a>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var movie in Model)
+                    {
+                        <tr>
+                            <td>@movie.Name</td>
+                            <td>@movie.Genre</td>
+                            <td><a asp-action="AddOrEdit" asp-route-id="@movie.Id" class="btn btn-outline-success">Edit</a></td>
+                            <td><a asp-action="Delete" asp-route-id="@movie.Id" class="btn btn-outline-danger">Delete</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
